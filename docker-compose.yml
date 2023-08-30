@@ -5,7 +5,7 @@ services:
     restart: always
     container_name: mysql
     ports:
-      - '3307:3306'
+      - '3308:3306'
     environment:
       MYSQL_DATABASE: keyist
       MYSQL_ROOT_PASSWORD: root
@@ -27,7 +27,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=keyistuser
       - SPRING_DATASOURCE_PASSWORD=keyistpassword
     ports:
-      - '8081:8081'
+      - '8888:8888'
 
   resource_server:
     image: 'keyist-resource-server:latest'
@@ -47,7 +47,7 @@ services:
       - >-
         SECURITY_AUTH_CLIENT_PASSWORD=test
     ports:
-      - '8080:8080'
+      - '9999:9999'
 
   client:
     image: 'keyist-client:latest'
@@ -58,4 +58,4 @@ services:
       - authorization_server
       - resource_server
     ports:
-      - '4200:80'
+      - '4200:8090'
